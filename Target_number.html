@@ -10,7 +10,13 @@
             flex-wrap: wrap;
         }
         .coin {
-            margin: 5px;
+            width: 33.33%; /* כל תמונה תתפוס 1/3 מרוחב התצוגה */
+            box-sizing: border-box;
+            padding: 5px;
+        }
+        .coin img {
+            width: 100%;
+            height: auto;
         }
     </style>
 </head>
@@ -34,31 +40,25 @@
 
             const tens = parseInt(number[0]);
             const units = parseInt(number[1]);
-            const totalCoins = tens + units;
-            let coinCount = 0;
 
             for (let i = 0; i < tens; i++) {
+                const coinDiv = document.createElement('div');
+                coinDiv.className = 'coin';
                 const img = document.createElement('img');
                 img.src = '10shekel.PNG'; // הנתיב לתמונה של 10 שקלים
                 img.alt = '10 שקל';
-                img.className = 'coin';
-                coinsContainer.appendChild(img);
-                coinCount++;
-                if (coinCount % 3 === 0) {
-                    coinsContainer.appendChild(document.createElement('br'));
-                }
+                coinDiv.appendChild(img);
+                coinsContainer.appendChild(coinDiv);
             }
 
             for (let i = 0; i < units; i++) {
+                const coinDiv = document.createElement('div');
+                coinDiv.className = 'coin';
                 const img = document.createElement('img');
                 img.src = '1shekel.PNG'; // הנתיב לתמונה של שקל אחד
                 img.alt = '1 שקל';
-                img.className = 'coin';
-                coinsContainer.appendChild(img);
-                coinCount++;
-                if (coinCount % 3 === 0) {
-                    coinsContainer.appendChild(document.createElement('br'));
-                }
+                coinDiv.appendChild(img);
+                coinsContainer.appendChild(coinDiv);
             }
         }
     </script>
