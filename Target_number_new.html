@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מטבעות</title>
+    <style>
+        .coins-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .coin {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>הכנס מספר דו ספרתי</h1>
+    <input type="text" id="numberInput" maxlength="2" />
+    <button onclick="showCoins()">הצג מטבעות</button>
+
+    <div class="coins-container" id="coinsContainer"></div>
+
+    <script>
+        function showCoins() {
+            const number = document.getElementById('numberInput').value;
+            const coinsContainer = document.getElementById('coinsContainer');
+            coinsContainer.innerHTML = '';
+
+            if (isNaN(number) || number.length !== 2) {
+                alert("אנא הכנס מספר דו ספרתי תקין.");
+                return;
+            }
+
+            const tens = parseInt(number[0]);
+            const units = parseInt(number[1]);
+
+            for (let i = 0; i < tens; i++) {
+                const img = document.createElement('img');
+                img.src = '10_shekel.png'; // הנתיב לתמונה של 10 שקלים
+                img.alt = '10 שקל';
+                img.className = 'coin';
+                coinsContainer.appendChild(img);
+            }
+
+            for (let i = 0; i < units; i++) {
+                const img = document.createElement('img');
+                img.src = '1_shekel.png'; // הנתיב לתמונה של שקל אחד
+                img.alt = '1 שקל';
+                img.className = 'coin';
+                coinsContainer.appendChild(img);
+            }
+        }
+    </script>
+</body>
+</html>
