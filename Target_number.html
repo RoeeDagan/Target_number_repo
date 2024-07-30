@@ -25,13 +25,16 @@
     <input type="text" id="numberInput" maxlength="2" />
     <button onclick="showCoins()">הצג מטבעות</button>
 
-    <div class="coins-container" id="coinsContainer"></div>
+    <div class="coins-container" id="tensContainer"></div>
+    <div class="coins-container" id="unitsContainer"></div>
 
     <script>
         function showCoins() {
             const number = document.getElementById('numberInput').value;
-            const coinsContainer = document.getElementById('coinsContainer');
-            coinsContainer.innerHTML = '';
+            const tensContainer = document.getElementById('tensContainer');
+            const unitsContainer = document.getElementById('unitsContainer');
+            tensContainer.innerHTML = '';
+            unitsContainer.innerHTML = '';
 
             if (isNaN(number) || number.length !== 2) {
                 alert("אנא הכנס מספר דו ספרתי תקין.");
@@ -48,7 +51,7 @@
                 img.src = '10shekel.PNG'; // הנתיב לתמונה של 10 שקלים
                 img.alt = '10 שקל';
                 coinDiv.appendChild(img);
-                coinsContainer.appendChild(coinDiv);
+                tensContainer.appendChild(coinDiv);
             }
 
             for (let i = 0; i < units; i++) {
@@ -58,7 +61,7 @@
                 img.src = '1shekel.PNG'; // הנתיב לתמונה של שקל אחד
                 img.alt = '1 שקל';
                 coinDiv.appendChild(img);
-                coinsContainer.appendChild(coinDiv);
+                unitsContainer.appendChild(coinDiv);
             }
         }
     </script>
